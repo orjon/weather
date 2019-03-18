@@ -1,7 +1,14 @@
 const path = require('path')
-const { HotModuleReplacementPlugin } = require('webpack')
+const { HotModuleReplacementPlugin, EnvironmentPlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const env = process.env.NODE_ENV !== 'production' ? (
+  new Dotenv()
+) : (
+  new EnvironmentPlugin({ ...process.env })
+)
 
 module.exports = {
   entry: './src/app.js',
@@ -31,6 +38,9 @@ module.exports = {
       filename: 'index.html',
       inject: 'body'
     }),
-    new Dotenv()
+    env,
+    new CopyWebpackPlugin([
+      { from: './src/images', to: 'images' }
+    ])
   ]
 }
