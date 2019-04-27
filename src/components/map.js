@@ -30,6 +30,7 @@ class Map extends React.Component {
   setMarkers() {
     this.markers.forEach(marker => marker.remove())
     this.markers = this.props.points.map(location => {
+      console.log('Maps.js: ' + location.weatherIcon + ', ' + location.name )
       let icon = ''
       switch (location.weatherIcon) {
         case '01d':
@@ -68,24 +69,48 @@ class Map extends React.Component {
         case '13n':
           icon='snowy-6'
           break
-        default:
+
+
+        case '09d':
+          icon='rainy-5'
+          break
+        case '09n':
+          icon='rainy-5'
+          break
+        case '10d':
           icon='rainy-6'
+          break
+        case '10n':
+          icon='rainy-6'
+          break
+
+        case '50d':
+          icon='snowy-6'
+          break
+
+        case '50n':
+          icon='snowy-6'
+          break
+
+        default:
+          icon='cloudy'
       }
 
-      const $marker = $('<img />', { class: 'custom-marker img', id: `${location.id}`, src: `../images/${icon}.svg`})
+      const $marker = $('<img />', { class: 'custom-marker img', id: location.id , src: `./images/${icon}.svg`})
 
-      $marker.on('click', () => this.props.handleIconClick(`${location.id}`))
 
-      const popup = new mapboxgl.Popup({ offset: 25, class: 'popup' })
-        .setHTML(
-          `<h2>${location.temp.toFixed(0)}°C</h2>
-          <h3>${location.name || ''}</h3>
-          <h4>(${location.latlng[0].toFixed(2)},${location.latlng[1].toFixed(2)})</h4>`
-        )
+      $marker.on('click', () => this.props.handleIconClick(location.id))
+
+      // const popup = new mapboxgl.Popup({ offset: 25, class: 'popup' })
+      //   .setHTML(
+      //     `<h2>${location.temp.toFixed(0)}°C</h2>
+      //     <h3>${location.name || ''}</h3>
+      //     <h4>(${location.latlng[0].toFixed(2)},${location.latlng[1].toFixed(2)})</h4>`
+      //   )
 
       return new mapboxgl.Marker($marker.get(0))
         .setLngLat({  lat: location.latlng[0], lng: location.latlng[1] })
-        .setPopup(popup)
+        // .setPopup(popup)
         .addTo(this.map)
     })
   }
