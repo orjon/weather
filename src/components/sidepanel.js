@@ -1,6 +1,4 @@
 import React from 'react'
-import $ from 'jquery'
-
 
 class SidePanel extends React.Component {
   constructor() {
@@ -9,7 +7,6 @@ class SidePanel extends React.Component {
       name: ''
     }
   }
-
 
   findLocation(locationId)  {
     this.locale = this.props.weatherData.filter(x => x.id === parseInt(locationId))[0]
@@ -89,8 +86,6 @@ class SidePanel extends React.Component {
         {this.findLocation(this.props.location)}
         <div className='place'>{this.locale.name}</div>
 
-        <div>{this.locale.weatherIcon}</div>
-        <div>{this.locale.weatherIconPath}</div>
 
         <img className='weatherIcon' src={this.locale.weatherIconPath} />
         <div className='temp'>{this.locale.temp.toFixed(1)}°C</div>
@@ -108,3 +103,6 @@ class SidePanel extends React.Component {
 }
 
 export default SidePanel
+
+// <div>{this.locale.weatherIcon}</div>
+// <div>{this.locale.weatherIconPath}</div>
