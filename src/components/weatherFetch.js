@@ -1,6 +1,4 @@
 import React from 'react'
-import $ from 'jquery'
-
 
 class WeatherFetch extends React.Component {
   constructor() {
