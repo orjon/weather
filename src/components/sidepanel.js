@@ -77,8 +77,6 @@ class SidePanel extends React.Component {
       <aside>
         {this.findLocation(this.props.location)}
         <div className='place'>{this.locale.name}</div>
-
-
         <img className='weatherIcon' src={this.locale.weatherIconPath} />
         <div className='temp'>{this.locale.temp.toFixed(1)}°C</div>
         <div>{this.locale.tempMin.toFixed(1)}°C / {this.locale.tempMax.toFixed(1)}°C</div>

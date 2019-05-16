@@ -7,7 +7,6 @@ class Map extends React.Component {
   constructor() {
     super()
     this.markers = []
-    this.clickFunction = this.clickFunction.bind(this)
   }
 
   componentDidMount() {
@@ -90,7 +89,6 @@ class Map extends React.Component {
 
       const $marker = $('<img />', { class: 'custom-marker img', id: location.id , src: `./images/${icon}.svg`})
 
-
       $marker.on('click', () => this.props.handleIconClick(location.id))
 
       // const popup = new mapboxgl.Popup({ offset: 25, class: 'popup' })
@@ -107,9 +105,6 @@ class Map extends React.Component {
     })
   }
 
-  clickFunction(event) {
-    const clicked = event.currentTarget.id
-  }
 
   render() {
     return(

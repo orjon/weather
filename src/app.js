@@ -17,11 +17,7 @@ class App extends React.Component {
 
     }
     this.mapCenter = { lat: 20, lng: 20},
-    this.worldQuadrant = [
-      '-180,0,0,90,',
-      '-180,-90,0,0,',
-      '0,0,180,90,',
-      '0,-90,180,0,'],
+    this.world = ['-180,-90,180,90,'],
     this.zoomLevel = 6
 
     this.handleIconClick = this.handleIconClick.bind(this)
@@ -43,54 +39,27 @@ class App extends React.Component {
     this.setState({ clickedLocation: id })
   }
 
-  localWeatherInfo() {
-    console.log('Getting weather information...')
-    // axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.userPosition.lat}&lon=${this.state.userPosition.lng}&APPID=${openweatherToken}`)
-    //   .then(response => {
-    //     const tempArray = response.data.list.map(eachLocation => ({
-    //       id: eachLocation.id,
-    //       name: eachLocation.name,
-    //       lat: eachLocation.coord.Lat,
-    //       lng: eachLocation.coord.Lon,
-    //       temp: eachLocation.main.temp,
-    //       tempMin: eachLocation.main.temp_min,
-    //       tempMax: eachLocation.main.temp_max,
-    //       humidity: eachLocation.main.humidity,
-    //       windSpeed: eachLocation.wind.speed,
-    //       windDirection: eachLocation.wind.deg,
-    //       weatherId: eachLocation.weather[0].id,
-    //       weather: eachLocation.weather[0].description,
-    //       weatherClouds: eachLocation.clouds.today,
-    //       weatherIcon: eachLocation.weather[0].icon
-    //     }))
-    //     console.log('TempArray: '+tempArray)
-    //   })
-  }
-
   globalWeatherInfo() {
-    console.log('getting global weather information...')
-    for (let i=0; i<this.worldQuadrant.length;i++){
-      axios.get(`http://api.openweathermap.org/data/2.5/box/city?bbox=${this.worldQuadrant[i]}${this.zoomLevel}&APPID=${openweatherToken}`)
-        .then(response => {
-          const tempArray = response.data.list.map(eachLocation => ({
-            id: eachLocation.id,
-            name: eachLocation.name,
-            latlng: [eachLocation.coord.Lat, eachLocation.coord.Lon],
-            temp: eachLocation.main.temp,
-            tempMin: eachLocation.main.temp_min,
-            tempMax: eachLocation.main.temp_max,
-            humidity: eachLocation.main.humidity,
-            windSpeed: eachLocation.wind.speed,
-            windDirection: eachLocation.wind.deg,
-            weatherId: eachLocation.weather[0].id,
-            weather: eachLocation.weather[0].description,
-            weatherClouds: eachLocation.clouds.today,
-            weatherIcon: eachLocation.weather[0].icon
-          }))
-          const weatherData = [...this.state.weatherData, ...tempArray]
-          this.setState({ weatherData })
-        })
-    }
+    axios.get(`http://api.openweathermap.org/data/2.5/box/city?bbox=${this.world}${this.zoomLevel}&APPID=${openweatherToken}`)
+      .then(response => {
+        const tempArray = response.data.list.map(eachLocation => ({
+          id: eachLocation.id,
+          name: eachLocation.name,
+          latlng: [eachLocation.coord.Lat, eachLocation.coord.Lon],
+          temp: eachLocation.main.temp,
+          tempMin: eachLocation.main.temp_min,
+          tempMax: eachLocation.main.temp_max,
+          humidity: eachLocation.main.humidity,
+          windSpeed: eachLocation.wind.speed,
+          windDirection: eachLocation.wind.deg,
+          weatherId: eachLocation.weather[0].id,
+          weather: eachLocation.weather[0].description,
+          weatherClouds: eachLocation.clouds.today,
+          weatherIcon: eachLocation.weather[0].icon
+        }))
+        const weatherData = [...this.state.weatherData, ...tempArray]
+        this.setState({ weatherData })
+      })
   }
 
   render() {
