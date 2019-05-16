@@ -22,15 +22,12 @@ class Map extends React.Component {
   }
 
   componentDidUpdate() {
-    const currentZoom = this.map.getZoom()
-    console.log('zoom: '+ Math.floor(currentZoom+1))
     this.setMarkers()
   }
 
   setMarkers() {
     this.markers.forEach(marker => marker.remove())
     this.markers = this.props.points.map(location => {
-      console.log('Maps.js: ' + location.weatherIcon + ', ' + location.name )
       let icon = ''
       switch (location.weatherIcon) {
         case '01d':
@@ -69,8 +66,6 @@ class Map extends React.Component {
         case '13n':
           icon='snowy-6'
           break
-
-
         case '09d':
           icon='rainy-5'
           break
@@ -83,15 +78,12 @@ class Map extends React.Component {
         case '10n':
           icon='rainy-6'
           break
-
         case '50d':
-          icon='snowy-6'
+          icon='cloudy'
           break
-
         case '50n':
-          icon='snowy-6'
+          icon='cloudy'
           break
-
         default:
           icon='cloudy'
       }
@@ -117,7 +109,6 @@ class Map extends React.Component {
 
   clickFunction(event) {
     const clicked = event.currentTarget.id
-    console.log('clicked',clicked)
   }
 
   render() {

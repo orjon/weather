@@ -10,9 +10,6 @@ class SidePanel extends React.Component {
 
   findLocation(locationId)  {
     this.locale = this.props.weatherData.filter(x => x.id === parseInt(locationId))[0]
-    console.log(this.locale.name)
-    console.log('sidepanel icon: ')
-    console.log(this.locale.weatherIcon)
     switch (this.locale.weatherIcon) {
       case '01d':
         this.locale.weatherIconPath='./images/day-amin.svg'
@@ -50,8 +47,6 @@ class SidePanel extends React.Component {
       case '13n':
         this.locale.weatherIconPath='./images/snowy-6-amin.svg'
         break
-
-
       case '09d':
         this.locale.weatherIconPath='./images/rainy-5-amin.svg'
         break
@@ -65,13 +60,11 @@ class SidePanel extends React.Component {
         this.locale.weatherIconPath='./images/rainy-6-amin.svg'
         break
       case '50d':
-        this.locale.weatherIconPath='./images/snowy-6-amin.svg'
+        this.locale.weatherIconPath='./images/cloudy-amin.svg'
         break
       case '50n':
-        this.locale.weatherIconPath='./images/snowy-6-amin.svg'
+        this.locale.weatherIconPath='./images/cloudy-amin.svg'
         break
-      // default:
-      //   this.locale.weatherIcon='./images/rainy-6-amin.svg'
     }
     this.locationName = location.id
     return
@@ -80,7 +73,6 @@ class SidePanel extends React.Component {
 
   render() {
     if(!this.props.location) return null
-    // console.log(location.name)
     return(
       <aside>
         {this.findLocation(this.props.location)}
@@ -103,6 +95,3 @@ class SidePanel extends React.Component {
 }
 
 export default SidePanel
-
-// <div>{this.locale.weatherIcon}</div>
-// <div>{this.locale.weatherIconPath}</div>
