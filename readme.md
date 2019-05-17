@@ -1,8 +1,7 @@
 # **It's the Weather!**
 ## Project 2 : Web Development Immersive, General Assembly ![General Assembly](images/readme/ga-logo.png "General Assembly logo")
 
-Live link: http://www.orjon.com/weather/<br>
-GitHub: https://github.com/orjon/weather
+http://www.orjon.com/weather/
 
 ## Overview
 It's the Weather! Interactive World map that shows current weather conditions.
