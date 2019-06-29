@@ -23,33 +23,49 @@ main {
 }
 
 .map {
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
 }
 
 
 aside {
-  font-family: 'Karla', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 5vh;
-  background-color: $panelColor;
-  width: 20vw;
+  justify-content: space-between;
   height: 100vh;
+      font-family: 'Karla', sans-serif;
 
-  .place{
-    font-size: 3vh;
+  .weatherInfo{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 5vh;
+    background-color: $panelColor;
+    width: 20vw;
+
+
+    .place{
+      font-size: 3vh;
+    }
+    .temp{
+      font-size: 5.5vh;
+    }
+    .tempMinMax{
+      font-size: 2.5vh;
+    }
+    .weatherIcon{
+      height: 175px;
+    }
   }
-  .temp{
-    font-size: 5.5vh;
-  }
-  .tempMinMax{
-    font-size: 2.5vh;
-  }
-  .weatherIcon{
-    height: 175px;
+
+  .limitations{
+    text-align: justify;
+    padding: 10px;
+    color: darkgrey;
+    width: 20vw;
   }
 }
 

@@ -8,6 +8,7 @@ class SidePanel extends React.Component {
     }
   }
 
+
   findLocation(locationId)  {
     this.locale = this.props.weatherData.filter(x => x.id === parseInt(locationId))[0]
     switch (this.locale.weatherIcon) {
@@ -71,22 +72,29 @@ class SidePanel extends React.Component {
 
   }
 
+
+
+
   render() {
+
     if(!this.props.location) return null
     return(
       <aside>
-        {this.findLocation(this.props.location)}
-        <div className='place'>{this.locale.name}</div>
-        <img className='weatherIcon' src={this.locale.weatherIconPath} />
-        <div className='temp'>{this.locale.temp.toFixed(1)}°C</div>
-        <div>{this.locale.tempMin.toFixed(1)}°C / {this.locale.tempMax.toFixed(1)}°C</div>
-        <div>&nbsp;</div>
-        <div>Humidty: {this.locale.humidity}%</div>
-        <div>&nbsp;</div>
-        <div>Windspeed: {this.locale.windSpeed} knots</div>
-        <div>Direction: {this.locale.windDirection.toFixed(0)}°</div>
-        <div>&nbsp;</div>
-        <div>{this.locale.weather}</div>
+        <div className='weatherInfo'>
+          {this.findLocation(this.props.location)}
+          <div className='place'>{this.locale.name}</div>
+          <img className='weatherIcon' src={this.locale.weatherIconPath} />
+          {this.locale.temp && (<div className='temp'>{this.locale.temp.toFixed(1)}°C</div>)}
+          {this.locale.tempMin && this.locale.tempMax && (<div>{this.locale.tempMin.toFixed(1)}°C / {this.locale.tempMax.toFixed(1)}°C</div>)}
+          <div>&nbsp;</div>
+          {this.locale.humidity && (<div>Humidty: {this.locale.humidity}%</div>)}
+          <div>&nbsp;</div>
+          {this.locale.windSpeed && (<div>Windspeed: {this.locale.windSpeed} knots</div>)}
+          {this.locale.windDirection && (<div>Direction: {this.locale.windDirection.toFixed(0)}°</div>)}
+          <div>&nbsp;</div>
+          <div>{this.locale.weather}</div>
+        </div>
+        <div className='limitations'>Update (2019-06-30): Originally this application displayed global weather data. A change in the OpenWeatherMap API now limits free weather data to 25 square degrees.</div>
       </aside>
     )
   }

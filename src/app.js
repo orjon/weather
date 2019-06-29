@@ -16,12 +16,12 @@ class App extends React.Component {
       weatherData: []
 
     }
-    this.mapCenter = { lat: 20, lng: 20},
-    this.world = ['-180,-90,180,90,'],
-    this.zoomLevel = 6
-
+    this.mapCenter = { lat: -0.15, lng: 51.51},
+    this.world = ['-3.5,50.5,1.5,55.5,'],
+    this.zoomLevel = 25
     this.handleIconClick = this.handleIconClick.bind(this)
   }
+
 
   componentDidMount() {
     this.globalWeatherInfo()

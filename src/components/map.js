@@ -13,8 +13,8 @@ class Map extends React.Component {
     this.map = new mapboxgl.Map({
       container: this.mapDiv,
       style: 'mapbox://styles/orjon/cjszbpgdy2pqm1fqkzvggasjm',
-      center: { lat: 51, lon: -0.7},
-      zoom: 3
+      center: { lat: 51.51, lon: -0.15},
+      zoom: 8
     })
 
     this.setMarkers()
