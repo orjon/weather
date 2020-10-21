@@ -1,7 +1,7 @@
 # **It's the Weather!**
-## Project 2 : Web Development Immersive, General Assembly ![General Assembly](images/readme/ga-logo.png "General Assembly logo")
+## Project 2 : Web Development Immersive, General Assembly ![General Assembly](readmeImages/ga-logo.png "General Assembly logo")
 
-http://www.orjon.com/weather/
+https://www.orjon.com/weather/
 
 **_Update (2019-06-30): Originally this application displayed global weather data. A change in the OpenWeatherMap API now limits free weather data to 25 square degrees._**
 
@@ -10,7 +10,7 @@ It's the Weather! Interactive World map that shows current weather conditions.
 
 React.js application that makes use of OpenWeatherMap and Mapbox APIs to gather current global weather information and place appropriate weather icons on an interactive world map. Icons can be selected to show more detailed weather information at that location.
 
-![alt text](images/readme/weatherScreenRecording.gif "Its the Weather screen recording")
+![alt text](readmeImages/weatherScreenRecording.gif "Its the Weather screen recording")
 
 This was my second project completed whilst undertaking the Web Development Immersive course at General Assembly, London. It was a pair project completed in 2 days with fellow student [Pascual Vila](https://www.linkedin.com/in/pascual-vila-web-developer/).
 
@@ -34,7 +34,7 @@ This was my second project completed whilst undertaking the Web Development Imme
 ### Screen Layout & Components
 The application is divided into two sections. The interactive World map in the left hand side, and the information panel on the right.
 
-![alt text](images/readme/weatherScreenshotSaltLakeCity.jpg "Its the Weather screen shot - US")
+![alt text](readmeImages/weatherScreenshotSaltLakeCity.jpg "Its the Weather screen shot - US")
 
 The application has two corresponding react components; [map.js](src/components/map.js) & [sidepanel.js](src/components/sidepanel.js)
 
@@ -83,7 +83,7 @@ This is achieved via an `axios.get(...)` request and the result is mapped into a
 
 ```javascript
 globalWeatherInfo() {
-  axios.get(`http://api.openweathermap.org/data/2.5/box/city?bbox=${this.world}${this.zoomLevel}&APPID=${openweatherToken}`)
+  axios.get(`https://api.openweathermap.org/data/2.5/box/city?bbox=${this.world}${this.zoomLevel}&APPID=${openweatherToken}`)
     .then(response => {
       const tempArray = response.data.list.map(eachLocation => ({
         id: eachLocation.id,
@@ -160,7 +160,7 @@ The icon set also has animated versions that are used in the information panel.
 
 The application is controlled solely by means of interacting with the map component. The map can be moved in any direction and the zoom level can be adjusted. Hovering over an icon enlarges it, and when clicked, the side panel displays detailed weather information for the selected location together with the corresponding animated weather icon.
 
- ![alt text](images/readme/weatherScreenRecordingInterface.gif "Its the Weather screen shot - Jamaica")
+ ![alt text](readmeImages/weatherScreenRecordingInterface.gif "Its the Weather screen shot - Jamaica")
 
 
 ## Bugs
@@ -180,4 +180,4 @@ Some known bugs in the application:
 
 * The number of locations is currently hard-coded, but future versions will have this linked to map zoom to allow the icon density to scale appropriately.
 
- ![alt text](images/readme/weatherScreenshotWorld.jpg "Its the Weather screen shot - World")
+ ![alt text](readmeImages/weatherScreenshotWorld.jpg "Its the Weather screen shot - World")
