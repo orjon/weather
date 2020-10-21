@@ -1,38 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 import Map from './components/map'
 import SidePanel from './components/sidepanel'
-
-const openweatherToken = process.env.OPEN_WEATHER_TOKEN
-
 import './scss/style.scss'
 
-class App extends React.Component {
+const openweatherToken = process.env.REACT_APP_OPEN_WEATHER_TOKEN
+
+class App extends Component {
   constructor() {
     super()
-
-    this.state = {
-      weatherData: []
-
-    }
-    this.mapCenter = { lat: -0.15, lng: 51.51},
-    this.world = ['-3.5,50.5,1.5,55.5,'],
+    this.state = { weatherData: [] }
+    this.mapCenter = { lat: -0.15, lng: 51.51}
+    this.world = ['-3.5,50.5,1.5,55.5,']
     this.zoomLevel = 25
     this.handleIconClick = this.handleIconClick.bind(this)
   }
 
-
   componentDidMount() {
     this.globalWeatherInfo()
-    navigator.geolocation.getCurrentPosition(pos => {
-      const userPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude}
-      this.setState({ userPosition })
-    })
-  }
-
-  removeEmpty(country) {
-    return (country.latlng.length > 0)
+    // navigator.geolocation.getCurrentPosition(pos => {
+    //   const userPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude}
+    //   this.setState({ userPosition })
+    // })
   }
 
   handleIconClick(id) {
@@ -40,7 +29,7 @@ class App extends React.Component {
   }
 
   globalWeatherInfo() {
-    axios.get(`http://api.openweathermap.org/data/2.5/box/city?bbox=${this.world}${this.zoomLevel}&APPID=${openweatherToken}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/box/city?bbox=${this.world}${this.zoomLevel}&APPID=${openweatherToken}`)
       .then(response => {
         const tempArray = response.data.list.map(eachLocation => ({
           id: eachLocation.id,
@@ -74,15 +63,13 @@ class App extends React.Component {
         />
         }
         <SidePanel
-          location={this.state.clickedLocation}
+          clickedLocation={this.state.clickedLocation}
           weatherData={this.state.weatherData}
         />
       </main>
-    )
+    );
   }
+
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+export default App;

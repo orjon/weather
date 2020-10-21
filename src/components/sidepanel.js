@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class SidePanel extends React.Component {
+class SidePanel extends Component {
   constructor() {
     super()
     this.locale={
@@ -8,82 +8,81 @@ class SidePanel extends React.Component {
     }
   }
 
-
   findLocation(locationId)  {
     this.locale = this.props.weatherData.filter(x => x.id === parseInt(locationId))[0]
     switch (this.locale.weatherIcon) {
       case '01d':
-        this.locale.weatherIconPath='./images/day-amin.svg'
+        this.locale.weatherIcon='day-amin.svg'
         break
       case '01n':
-        this.locale.weatherIconPath='./images/night-amin.svg'
+        this.locale.weatherIcon='night-amin.svg'
         break
       case '02d':
-        this.locale.weatherIconPath='./images/cloudy-day-1-amin.svg'
+        this.locale.weatherIcon='cloudy-day-1-amin.svg'
         break
       case '02n':
-        this.locale.weatherIconPath='./images/cloudy-night-1-amin.svg'
+        this.locale.weatherIcon='cloudy-night-1-amin.svg'
         break
       case '03d':
-        this.locale.weatherIconPath='./images/cloudy-day-3-amin.svg'
+        this.locale.weatherIcon='cloudy-day-3-amin.svg'
         break
       case '03n':
-        this.locale.weatherIconPath='./images/cloudy-night-3-amin.svg'
+        this.locale.weatherIcon='cloudy-night-3-amin.svg'
         break
       case '04d':
-        this.locale.weatherIconPath='./images/cloudy-amin.svg'
+        this.locale.weatherIcon='cloudy-amin.svg'
         break
       case '04n':
-        this.locale.weatherIconPath='./images/cloudy-amin.svg'
+        this.locale.weatherIcon='cloudy-amin.svg'
         break
       case '11d':
-        this.locale.weatherIconPath='./images/thunder-amin.svg'
+        this.locale.weatherIcon='thunder-amin.svg'
         break
       case '11n':
-        this.locale.weatherIconPath='./images/thunder-amin.svg'
+        this.locale.weatherIcon='thunder-amin.svg'
         break
       case '13d':
-        this.locale.weatherIconPath='./images/snowy-6-amin.svg'
+        this.locale.weatherIcon='snowy-6-amin.svg'
         break
       case '13n':
-        this.locale.weatherIconPath='./images/snowy-6-amin.svg'
+        this.locale.weatherIcon='snowy-6-amin.svg'
         break
       case '09d':
-        this.locale.weatherIconPath='./images/rainy-5-amin.svg'
+        this.locale.weatherIcon='rainy-5-amin.svg'
         break
       case '09n':
-        this.locale.weatherIconPath='./images/rainy-5-amin.svg'
+        this.locale.weatherIcon='rainy-5-amin.svg'
         break
       case '10d':
-        this.locale.weatherIconPath='./images/rainy-6-amin.svg'
+        this.locale.weatherIcon='rainy-6-amin.svg'
         break
       case '10n':
-        this.locale.weatherIconPath='./images/rainy-6-amin.svg'
+        this.locale.weatherIcon='rainy-6-amin.svg'
         break
       case '50d':
-        this.locale.weatherIconPath='./images/cloudy-amin.svg'
+        this.locale.weatherIcon='cloudy-amin.svg'
         break
       case '50n':
-        this.locale.weatherIconPath='./images/cloudy-amin.svg'
+        this.locale.weatherIcon='cloudy-amin.svg'
+        break
+      default:
         break
     }
-    this.locationName = location.id
+    // this.locationName = window.location.id
     return
 
   }
 
 
-
-
   render() {
 
-    if(!this.props.location) return null
+    if(!this.props.clickedLocation) return null
     return(
       <aside>
         <div className='weatherInfo'>
-          {this.findLocation(this.props.location)}
+          {this.findLocation(this.props.clickedLocation)}
           <div className='place'>{this.locale.name}</div>
-          <img className='weatherIcon' src={this.locale.weatherIconPath} />
+          <img className='weatherIcon' src={require(`../images/${this.locale.weatherIcon}`)} alt='weather icon'/>
           {this.locale.temp && (<div className='temp'>{this.locale.temp.toFixed(1)}°C</div>)}
           {this.locale.tempMin && this.locale.tempMax && (<div>{this.locale.tempMin.toFixed(1)}°C / {this.locale.tempMax.toFixed(1)}°C</div>)}
           <div>&nbsp;</div>

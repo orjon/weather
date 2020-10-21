@@ -1,7 +1,8 @@
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import $ from 'jquery'
-mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN
+
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 class Map extends React.Component {
   constructor() {
@@ -87,7 +88,8 @@ class Map extends React.Component {
           icon='cloudy'
       }
 
-      const $marker = $('<img />', { class: 'custom-marker img', id: location.id , src: `./images/${icon}.svg`})
+
+      const $marker = $('<img />', { class: 'custom-marker img', id: location.id , src:require(`../images/${icon}.svg`)})
 
       $marker.on('click', () => this.props.handleIconClick(location.id))
 

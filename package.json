@@ -1,39 +1,39 @@
 {
-  "name": "rest-countries",
-  "version": "1.0.0",
-  "description": "![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)",
-  "main": "webpack.config.js",
-  "scripts": {
-    "serve": "webpack-dev-server --mode=development",
-    "build": "webpack -p",
-    "start": "node index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.0",
-    "dotenv-webpack": "^1.7.0",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.28.1",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
-  },
+  "name": "2020-10-21_its-the-weather",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://www.orjon.com/weather",
   "dependencies": {
-    "axios": "^0.18.1",
-    "copy-webpack-plugin": "^5.0.1",
-    "dotenv": "^7.0.0",
-    "express": "^4.16.4",
-    "jquery": "^3.3.1",
-    "mapbox-gl": "^0.53.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-sliding-pane": "^3.1.0"
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
+    "jquery": "^3.5.1",
+    "mapbox-gl": "^1.12.0",
+    "node-sass": "^4.14.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-scripts": "3.4.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
