@@ -1,11 +1,11 @@
 @import '~mapbox-gl/dist/mapbox-gl.css';
-$popUpColor: rgba(68,68,68,0.85);
-$popUpEdge: #FFF;
+$popUpColor: rgba(68, 68, 68, 0.85);
+$popUpEdge: #fff;
 $mapTempColor: #222;
-$panelColor:#EEE;
+$panelColor: #eee;
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: $panelColor;
@@ -14,7 +14,6 @@ html, body {
 * {
   box-sizing: border-box;
 }
-
 
 main {
   display: flex;
@@ -27,16 +26,14 @@ main {
   height: 100vh;
 }
 
-
 aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-      font-family: 'Karla', sans-serif;
+  font-family: 'Karla', sans-serif;
 
-  .weatherInfo{
-
+  .weatherInfo {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -46,22 +43,21 @@ aside {
     background-color: $panelColor;
     width: 20vw;
 
-
-    .place{
+    .place {
       font-size: 3vh;
     }
-    .temp{
+    .temp {
       font-size: 5.5vh;
     }
-    .tempMinMax{
+    .tempMinMax {
       font-size: 2.5vh;
     }
-    .weatherIcon{
+    .weatherIcon {
       height: 175px;
     }
   }
 
-  .limitations{
+  .limitations {
     text-align: justify;
     padding: 10px;
     color: darkgrey;
@@ -74,12 +70,12 @@ div {
 }
 
 .custom-marker {
-  color:$mapTempColor;
+  color: $mapTempColor;
   height: 7vh;
   font-size: 20px;
   opacity: 0.8;
   transition: opacity 1s;
-  transition: height .2s;
+  transition: height 0.2s;
 }
 
 .custom-marker:hover {
@@ -87,13 +83,7 @@ div {
   opacity: 1;
 }
 
-
-.mapboxgl-popup-tip {
-
-}
-
 .mapboxgl-popup-content {
-
   text-align: center;
   color: $mapTempColor;
   border-radius: 20%;
@@ -103,5 +93,4 @@ div {
   font-size: 11px;
   font-weight: 200;
   line-height: 3px;
-
 }

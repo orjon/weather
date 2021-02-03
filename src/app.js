@@ -7,23 +7,12 @@ import './scss/style.scss';
 const openweatherToken = process.env.REACT_APP_OPEN_WEATHER_TOKEN;
 
 const App = () => {
-  // constructor() {
-  //   super();
-  //   this.state = { weatherData: [] };
-  //   this.mapCenter = { lat: -0.15, lng: 51.51 };
-  //   this.world = ['-3.5,50.5,1.5,55.5,'];
-  //   this.zoomLevel = 25;
-  //   this.handleIconClick = this.handleIconClick.bind(this);
-  // }
-
   const [weatherData, setWeatherData] = useState([]);
   const [clickedLocation, setClickedLocation] = useState(undefined);
 
   let mapCenter = { lat: -0.15, lng: 51.51 };
   let world = ['-3.5,50.5,1.5,55.5,'];
   let zoomLevel = 25;
-
-  // this.handleIconClick = this.handleIconClick.bind(this);
 
   useEffect(() => {
     if (weatherData.length === 0) getWeatherInfo();
@@ -42,7 +31,7 @@ const App = () => {
   // }
 
   const handleIconClick = (id) => {
-    setClickedLocation({ clickedLocation: id });
+    setClickedLocation(id);
   };
 
   let getWeatherInfo = async () => {
