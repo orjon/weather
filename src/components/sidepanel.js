@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { iconAssignment } from '../helpers/iconAssignment';
+import { iconAssignmentAnimated } from '../helpers/iconAssignment';
 
 const SidePanel = ({ clickedLocation, weatherData }) => {
   const [selectedLocation, setSelectedLocation] = useState(undefined);
@@ -9,7 +9,9 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
       const thisLocation = weatherData.filter(
         (x) => x.id === parseInt(clickedLocation)
       )[0];
-      thisLocation.weatherIcon = iconAssignment(thisLocation.weatherIcon);
+      thisLocation.weatherIcon = iconAssignmentAnimated(
+        thisLocation.weatherIcon
+      );
       setSelectedLocation(thisLocation);
       // this.locationName = window.location.id
       return;

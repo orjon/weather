@@ -10,7 +10,7 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [clickedLocation, setClickedLocation] = useState(undefined);
 
-  let mapCenter = { lat: -0.15, lng: 51.51 };
+  let mapCenter = { lon: -0.15, lat: 51.51 };
   let world = ['-3.5,50.5,1.5,55.5,'];
   let zoomLevel = 25;
 
@@ -60,9 +60,8 @@ const App = () => {
     <main>
       {weatherData.length !== 0 && (
         <Map
-          weatherPoints={weatherData}
-          center={mapCenter}
-          points={weatherData}
+          weatherLocations={weatherData}
+          mapCenter={mapCenter}
           handleIconClick={handleIconClick}
         />
       )}
