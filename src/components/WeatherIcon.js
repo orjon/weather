@@ -5,14 +5,13 @@ import { stringSplitter } from '../helpers/strings';
 
 const WeatherIcon = ({ location, handleIconClick }) => {
   let icon = iconAssignment(location.weatherIcon);
-  let id = location.id;
 
-  const handleClick = (id) => {
-    handleIconClick(id);
+  const handleClick = () => {
+    handleIconClick(location.id);
   };
   return (
     <Marker longitude={location.latlng[1]} latitude={location.latlng[0]}>
-      <div className='Marker' onClick={handleClick(id)}>
+      <div className='Marker' onClick={handleClick}>
         <img
           alt={`${location.name} icon`}
           className='weatherIcon'

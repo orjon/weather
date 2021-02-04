@@ -14,25 +14,34 @@ body {
 
 * {
   box-sizing: border-box;
+  overflow: none;
 }
 
 main {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  overflow: none;
 }
 
 .map {
-  width: 100vw;
-  height: 100vh;
+  border: $devBorder solid orange;
+  flex: 1;
+  height: 100%;
 }
 
 aside {
+  display: none;
+  border: $devBorder solid orange;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
   font-family: 'Karla', sans-serif;
+  width: 20vw;
 
   .weatherInfo {
     display: flex;
@@ -42,7 +51,6 @@ aside {
     text-align: center;
     padding-top: 5vh;
     background-color: $panelColor;
-    width: 20vw;
 
     .place {
       font-size: 3vh;

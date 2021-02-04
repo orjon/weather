@@ -23,9 +23,9 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
   }, [clickedLocation]);
 
   return (
-    <Fragment>
+    <aside>
       {selectedLocation && (
-        <aside>
+        <Fragment>
           <div className='weatherInfo'>
             <div className='place'>{selectedLocation.name}</div>
             <img
@@ -62,9 +62,9 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
             weather data. A change in the OpenWeatherMap API now limits free
             weather data to 25 square degrees.
           </div>
-        </aside>
+        </Fragment>
       )}
-    </Fragment>
+    </aside>
   );
 };
 
