@@ -82,35 +82,36 @@ div {
   .weatherIcon {
     border: $devBorder solid blue;
     color: $mapTempColor;
-    height: 100px;
+    height: $icon;
     font-size: 20px;
     opacity: 0.8;
     transition: opacity 1s;
     transition: height 0.2s;
     &:hover {
-      height: 150px;
+      height: $iconHover;
       opacity: 1;
       z-index: 5;
     }
     &:hover + .weatherIconLocation {
       opacity: 1;
-      z-index: 5;
     }
   }
   .weatherIconLocation {
     background-color: white;
-    height: 30px;
-    padding: 15px;
+    padding: 7px 10px;
     border-radius: 15px;
     transition: opacity 0.5s;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 50px;
+    z-index: 50;
+    top: 20px;
     border: $devBorder solid red;
     opacity: 0;
     color: black;
+    font-size: 12px;
   }
 }
 
