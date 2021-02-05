@@ -2,6 +2,7 @@ import React from 'react';
 import { Marker } from 'react-map-gl';
 import { iconAssignment } from '../helpers/iconAssignment';
 import { stringSplitter } from '../helpers/strings';
+import '../scss/WeatherIcon.scss';
 
 const WeatherIcon = ({ location, handleIconClick }) => {
   let icon = iconAssignment(location.weatherIcon);

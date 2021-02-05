@@ -9,6 +9,7 @@ const openweatherToken = process.env.REACT_APP_OPEN_WEATHER_TOKEN;
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [clickedLocation, setClickedLocation] = useState(undefined);
+  const [center, setCenter] = useState(undefined);
 
   let mapCenter = { lon: -0.15, lat: 51.51 };
   let world = ['-3.5,50.5,1.5,55.5,'];
@@ -18,17 +19,18 @@ const App = () => {
     if (weatherData.length === 0) getWeatherInfo();
   }, []);
 
-  useEffect(() => {
-    console.log('Clickedlocation: ', clickedLocation);
-  }, [clickedLocation]);
-
-  // componentDidMount() {
-  //   this.globalWeatherInfo();
-  // navigator.geolocation.getCurrentPosition(pos => {
-  //   const userPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude}
-  //   this.setState({ userPosition })
-  // })
-  // }
+  // useEffect(() => {
+  //   if (!center && navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((pos) => {
+  //       console.log('Pos: ', pos);
+  //       setCenter({
+  //         lat: pos.coords.latitude,
+  //         lon: pos.coords.longitude,
+  //       });
+  //       console.log('userPosition: ', center);
+  //     });
+  //   }
+  // }, [clickedLocation]);
 
   const handleIconClick = (id) => {
     setClickedLocation(id);
@@ -65,7 +67,12 @@ const App = () => {
           handleIconClick={handleIconClick}
         />
       )}
-      <SidePanel clickedLocation={clickedLocation} weatherData={weatherData} />
+      {clickedLocation && (
+        <SidePanel
+          clickedLocation={clickedLocation}
+          weatherData={weatherData}
+        />
+      )}
     </main>
   );
 };

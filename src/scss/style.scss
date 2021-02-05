@@ -1,9 +1,5 @@
 @import '~mapbox-gl/dist/mapbox-gl.css';
 @import './Variables.scss';
-$popUpColor: rgba(68, 68, 68, 0.85);
-$popUpEdge: #fff;
-$mapTempColor: #222;
-$panelColor: #eee;
 
 html,
 body {
@@ -33,94 +29,8 @@ main {
   height: 100%;
 }
 
-aside {
-  display: none;
-  border: $devBorder solid orange;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  font-family: 'Karla', sans-serif;
-  width: 20vw;
-
-  .weatherInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    padding-top: 5vh;
-    background-color: $panelColor;
-
-    .place {
-      font-size: 3vh;
-    }
-    .temp {
-      font-size: 5.5vh;
-    }
-    .tempMinMax {
-      font-size: 2.5vh;
-    }
-    .weatherIcon {
-      height: 175px;
-    }
-  }
-
-  .limitations {
-    text-align: justify;
-    padding: 10px;
-    color: darkgrey;
-    width: 20vw;
-  }
-}
-
 div {
   color: $mapTempColor;
-}
-
-.Marker {
-  border: $devBorder solid lime;
-  width: 0px;
-  height: 0px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -50%;
-  .weatherIcon {
-    border: $devBorder solid blue;
-    color: $mapTempColor;
-    height: $icon;
-    font-size: 20px;
-    opacity: 0.8;
-    transition: opacity 1s;
-    transition: height 0.2s;
-    &:hover {
-      height: $iconHover;
-      opacity: 1;
-      z-index: 5;
-    }
-    &:hover + .weatherIconLocation {
-      opacity: 1;
-    }
-  }
-  .weatherIconLocation {
-    background-color: white;
-    padding: 7px 10px;
-    border-radius: 15px;
-    transition: opacity 0.5s;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 50;
-    top: 20px;
-    border: $devBorder solid red;
-    opacity: 0;
-    color: black;
-    font-size: 12px;
-  }
 }
 
 .mapboxgl-popup-content {

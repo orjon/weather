@@ -8,7 +8,7 @@ const Map = ({ weatherLocations, mapCenter, handleIconClick }) => {
     height: '100%',
     longitude: mapCenter.lon,
     latitude: mapCenter.lat,
-    zoom: 8,
+    zoom: 12,
   });
 
   let weatherIcons = weatherLocations.map((location) => (

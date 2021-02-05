@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { iconAssignmentAnimated } from '../helpers/iconAssignment';
+import '../scss/Sidepanel.scss';
 
 const SidePanel = ({ clickedLocation, weatherData }) => {
   const [selectedLocation, setSelectedLocation] = useState(undefined);
@@ -7,13 +8,12 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
   useEffect(() => {
     const findLocation = async (clickedLocation) => {
       const thisLocation = weatherData.filter(
-        (x) => x.id === parseInt(clickedLocation)
+        (location) => location.id === parseInt(clickedLocation)
       )[0];
-      thisLocation.weatherIcon = iconAssignmentAnimated(
+      thisLocation.animatedIcon = iconAssignmentAnimated(
         thisLocation.weatherIcon
       );
       setSelectedLocation(thisLocation);
-      // this.locationName = window.location.id
       return;
     };
 
@@ -30,14 +30,15 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
             <div className='place'>{selectedLocation.name}</div>
             <img
               className='weatherIcon'
-              src={require(`../images/${selectedLocation.weatherIcon}`)}
+              src={require(`../images/${selectedLocation.animatedIcon}`)}
               alt='weather icon'
             />
+            <div>{selectedLocation.weather}</div>
             {selectedLocation.temp && (
               <div className='temp'>{selectedLocation.temp.toFixed(1)}°C</div>
             )}
             {selectedLocation.tempMin && selectedLocation.tempMax && (
-              <div>
+              <div className='tempMinMax'>
                 {selectedLocation.tempMin.toFixed(1)}°C /{' '}
                 {selectedLocation.tempMax.toFixed(1)}°C
               </div>
@@ -53,8 +54,6 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
             {selectedLocation.windDirection && (
               <div>Direction: {selectedLocation.windDirection.toFixed(0)}°</div>
             )}
-            <div>&nbsp;</div>
-            <div>{selectedLocation.weather}</div>
           </div>
 
           <div className='limitations'>

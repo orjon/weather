@@ -1,0 +1,48 @@
+@import './Variables.scss';
+
+aside {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-family: 'Karla', sans-serif;
+  width: 20vw;
+  background-color: $panelColor;
+
+  .weatherInfo {
+    border: $devBorder solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 5vh;
+
+    .place {
+      border: $devBorder solid cyan;
+      font-size: 3vh;
+    }
+    .temp {
+      border: $devBorder solid lime;
+      font-size: 5.5vh;
+    }
+    .tempMinMax {
+      border: $devBorder solid cyan;
+      font-size: 2.5vh;
+    }
+    .weatherIcon {
+      border: $devBorder solid lime;
+      height: 175px;
+    }
+  }
+
+  .limitations {
+    border: $devBorder solid pink;
+    text-align: justify;
+    padding: 10px;
+    color: darkgrey;
+    width: 20vw;
+  }
+}
