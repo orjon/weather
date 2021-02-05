@@ -10,6 +10,12 @@ aside {
   font-family: 'Karla', sans-serif;
   width: 20vw;
   background-color: $panelColor;
+  opacity: 1;
+  transition: opacity 500ms linear;
+
+  &.hidden {
+    opacity: 0;
+  }
 
   .weatherInfo {
     border: $devBorder solid red;

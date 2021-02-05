@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { iconAssignmentAnimated } from '../helpers/iconAssignment';
 import '../scss/Sidepanel.scss';
 
-const SidePanel = ({ clickedLocation, weatherData }) => {
+const SidePanel = ({ clickedLocation, weatherData, panelVisible }) => {
   const [selectedLocation, setSelectedLocation] = useState(undefined);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const SidePanel = ({ clickedLocation, weatherData }) => {
   }, [clickedLocation]);
 
   return (
-    <aside>
+    <aside className={panelVisible ? '' : 'hidden'}>
       {selectedLocation && (
         <Fragment>
           <div className='weatherInfo'>

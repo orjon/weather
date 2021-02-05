@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Map from './components/map';
-import SidePanel from './components/sidepanel';
+import Map from './components/Map';
+import SidePanel from './components/Sidepanel';
 import './scss/style.scss';
 
 const openweatherToken = process.env.REACT_APP_OPEN_WEATHER_TOKEN;
@@ -9,14 +9,25 @@ const openweatherToken = process.env.REACT_APP_OPEN_WEATHER_TOKEN;
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [clickedLocation, setClickedLocation] = useState(undefined);
+  const [panelVisible, setPanelVisible] = useState(false);
   const [center, setCenter] = useState(undefined);
 
   let mapCenter = { lon: -0.15, lat: 51.51 };
-  let world = ['-3.5,50.5,1.5,55.5,'];
-  let zoomLevel = 25;
+  let world = '-3.5,50.5,1.5,55.5,';
+  let zoomLevel = '20';
 
   useEffect(() => {
     if (weatherData.length === 0) getWeatherInfo();
+  }, []);
+
+  useEffect(() => {
+    const listener = (e) => {
+      if (e.key === 'Escape') {
+        clearTimeout(panelFadeTimer);
+        setPanelVisible(false);
+      }
+    };
+    window.addEventListener('keydown', listener);
   }, []);
 
   // useEffect(() => {
@@ -32,8 +43,12 @@ const App = () => {
   //   }
   // }, [clickedLocation]);
 
+  let panelFadeTimer;
   const handleIconClick = (id) => {
+    clearTimeout(panelFadeTimer);
     setClickedLocation(id);
+    setPanelVisible(true);
+    panelFadeTimer = setTimeout(() => setPanelVisible(false), 5000);
   };
 
   let getWeatherInfo = async () => {
@@ -67,12 +82,11 @@ const App = () => {
           handleIconClick={handleIconClick}
         />
       )}
-      {clickedLocation && (
-        <SidePanel
-          clickedLocation={clickedLocation}
-          weatherData={weatherData}
-        />
-      )}
+      <SidePanel
+        panelVisible={panelVisible}
+        clickedLocation={clickedLocation}
+        weatherData={weatherData}
+      />
     </main>
   );
 };
