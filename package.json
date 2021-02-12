@@ -2,7 +2,7 @@
   "name": "2019-03-06_its-the-weather",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://www.orjon.com/weather",
+  "homepage": "/weather",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

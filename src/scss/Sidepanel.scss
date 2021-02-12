@@ -9,6 +9,7 @@ aside {
   height: 100%;
   font-family: 'Karla', sans-serif;
   width: 20vw;
+  min-width: 150px;
   background-color: $panelColor;
   opacity: 1;
   transition: opacity 500ms linear;
@@ -49,6 +50,6 @@ aside {
     text-align: justify;
     padding: 10px;
     color: darkgrey;
-    width: 20vw;
+    width: 100%;
   }
 }
