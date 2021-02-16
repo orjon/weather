@@ -48,7 +48,7 @@ const App = () => {
     clearTimeout(panelFadeTimer);
     setClickedLocation(id);
     setPanelVisible(true);
-    panelFadeTimer = setTimeout(() => setPanelVisible(false), 5000);
+    panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
   };
 
   let getWeatherInfo = async () => {
