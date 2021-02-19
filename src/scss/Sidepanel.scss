@@ -9,10 +9,11 @@ aside {
   height: 100%;
   font-family: 'Karla', sans-serif;
   width: 20vw;
-  min-width: 150px;
+  min-width: 250px;
   background-color: $panelColor;
   opacity: 1;
   transition: opacity 500ms linear;
+  padding: $spacing;
 
   &.hidden {
     opacity: 0;
@@ -25,11 +26,13 @@ aside {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding-top: 5vh;
-
+    padding-top: $spacing *2;
+    
     .place {
       border: $devBorder solid cyan;
-      font-size: 3vh;
+      font-size: 4vh;
+      font-weight: 600;
+
     }
     .temp {
       border: $devBorder solid lime;

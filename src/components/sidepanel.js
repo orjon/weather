@@ -57,7 +57,7 @@ const SidePanel = ({ clickedLocation, weatherData, panelVisible }) => {
           </div>
 
           <div className='limitations'>
-            Update (2019-06-30): Originally this application displayed global
+            *Originally this application displayed global
             weather data. A change in the OpenWeatherMap API now limits free
             weather data to 25 square degrees.
           </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useWindowDimensions from './helpers/windowProperties';
 import Map from './components/Map';
 import SidePanel from './components/Sidepanel';
 import './scss/style.scss';
@@ -10,7 +11,11 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [clickedLocation, setClickedLocation] = useState(undefined);
   const [panelVisible, setPanelVisible] = useState(false);
-  const [center, setCenter] = useState(undefined);
+  // const [center, setCenter] = useState(undefined);
+
+  const { orientation } = useWindowDimensions();
+
+  console.log('window:', orientation);
 
   let mapCenter = { lon: -0.15, lat: 51.51 };
   let world = '-3.5,50.5,1.5,55.5,';
@@ -48,7 +53,7 @@ const App = () => {
     clearTimeout(panelFadeTimer);
     setClickedLocation(id);
     setPanelVisible(true);
-    panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
+    // panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
   };
 
   let getWeatherInfo = async () => {
