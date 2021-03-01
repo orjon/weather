@@ -33,6 +33,7 @@ const SidePanel = ({
         <Fragment>
           <div className={`${orientation} weatherInfo`}>
             <div className='weatherPlace'>
+              {selectedLocation.coordinates}
               <div className='place'>{selectedLocation.name}</div>
               <div className='summary'>{selectedLocation.weather}</div>
             </div>

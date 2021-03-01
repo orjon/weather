@@ -14,7 +14,7 @@ const App = () => {
   // const [center, setCenter] = useState(undefined);
   const { orientation } = useWindowProperties();
 
-  let mapCenter = { lon: -0.15, lat: 51.51 };
+  let mapCenter = { lon: -0.1257, lat: 51.5085 };
   let world = '-3.5,50.5,1.5,55.5,';
   let zoomLevel = '20';
 
@@ -22,15 +22,15 @@ const App = () => {
     if (weatherData.length === 0) getWeatherInfo();
   });
 
-  useEffect(() => {
-    const listener = (e) => {
-      if (e.key === 'Escape') {
-        clearTimeout(panelFadeTimer);
-        setPanelVisible(false);
-      }
-    };
-    window.addEventListener('keydown', listener);
-  }, []);
+  // useEffect(() => {
+  //   const listener = (e) => {
+  //     if (e.key === 'Escape') {
+  //       clearTimeout(panelFadeTimer);
+  //       setPanelVisible(false);
+  //     }
+  //   };
+  //   window.addEventListener('keydown', listener);
+  // }, []);
 
   // useEffect(() => {
   //   if (!center && navigator.geolocation) {
@@ -45,13 +45,13 @@ const App = () => {
   //   }
   // }, [clickedLocation]);
 
-  let panelFadeTimer;
+  // let panelFadeTimer;
 
   const handleIconClick = (id) => {
-    clearTimeout(panelFadeTimer);
+    // clearTimeout(panelFadeTimer);
     setClickedLocation(id);
     setPanelVisible(true);
-    panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
+    // panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
   };
 
   let getWeatherInfo = async () => {
