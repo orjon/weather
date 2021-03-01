@@ -2,7 +2,12 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { iconAssignmentAnimated } from '../helpers/iconAssignment';
 import '../scss/Sidepanel.scss';
 
-const SidePanel = ({ clickedLocation, weatherData, panelVisible }) => {
+const SidePanel = ({
+  clickedLocation,
+  weatherData,
+  panelVisible,
+  orientation,
+}) => {
   const [selectedLocation, setSelectedLocation] = useState(undefined);
 
   useEffect(() => {
@@ -20,46 +25,73 @@ const SidePanel = ({ clickedLocation, weatherData, panelVisible }) => {
     if (clickedLocation) {
       findLocation(clickedLocation);
     }
-  }, [clickedLocation]);
+  }, [clickedLocation, weatherData]);
 
   return (
-    <aside className={panelVisible ? '' : 'hidden'}>
+    <aside className={`${orientation} ${panelVisible ? '' : 'hidden'}`}>
       {selectedLocation && (
         <Fragment>
-          <div className='weatherInfo'>
-            <div className='place'>{selectedLocation.name}</div>
-            <img
-              className='weatherIcon'
-              src={require(`../images/${selectedLocation.animatedIcon}`)}
-              alt='weather icon'
-            />
-            <div>{selectedLocation.weather}</div>
-            {selectedLocation.temp && (
-              <div className='temp'>{selectedLocation.temp.toFixed(1)}°C</div>
-            )}
-            {selectedLocation.tempMin && selectedLocation.tempMax && (
-              <div className='tempMinMax'>
-                {selectedLocation.tempMin.toFixed(1)}°C /{' '}
-                {selectedLocation.tempMax.toFixed(1)}°C
+          <div className={`${orientation} weatherInfo`}>
+            <div className='weatherPlace'>
+              <div className='place'>{selectedLocation.name}</div>
+              <div className='summary'>{selectedLocation.weather}</div>
+            </div>
+
+            <div className={`${orientation} weatherDetails`}>
+              <div className='weatherblock'>
+                <img
+                  className='weatherIcon'
+                  src={require(`../images/${selectedLocation.animatedIcon}`)}
+                  alt='weather icon'
+                />
               </div>
-            )}
-            <div>&nbsp;</div>
-            {selectedLocation.humidity && (
-              <div>Humidty: {selectedLocation.humidity}%</div>
-            )}
-            <div>&nbsp;</div>
-            {selectedLocation.windSpeed && (
-              <div>Windspeed: {selectedLocation.windSpeed} knots</div>
-            )}
-            {selectedLocation.windDirection && (
-              <div>Direction: {selectedLocation.windDirection.toFixed(0)}°</div>
-            )}
+
+              <div className='weatherblock'>
+                {selectedLocation.temp && (
+                  <div className='temp'>
+                    {selectedLocation.temp.toFixed(1)}°C
+                  </div>
+                )}
+                {selectedLocation.tempMin && selectedLocation.tempMax && (
+                  <div className='tempMinMax'>
+                    {selectedLocation.tempMin.toFixed(1)}°C /{' '}
+                    {selectedLocation.tempMax.toFixed(1)}°C
+                  </div>
+                )}
+                <div className='list'>
+                  {selectedLocation.humidity && (
+                    <div className='listItem'>
+                      <div className='listLabel'>Humidty:</div>
+                      <div className='listValue'>
+                        {selectedLocation.humidity}%
+                      </div>
+                    </div>
+                  )}
+                  {selectedLocation.windSpeed && (
+                    <div className='listItem'>
+                      <div className='listLabel'>Windspeed:</div>
+                      <div className='listValue'>
+                        {selectedLocation.windSpeed} knots
+                      </div>
+                    </div>
+                  )}
+                  {selectedLocation.windDirection && (
+                    <div className='listItem'>
+                      <div className='listLabel'>Direction:</div>
+                      <div className='listValue'>
+                        {selectedLocation.windDirection.toFixed(0)}°
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className='limitations'>
-            *Originally this application displayed global
-            weather data. A change in the OpenWeatherMap API now limits free
-            weather data to 25 square degrees.
+            *Originally this application displayed global weather data. A change
+            in the OpenWeatherMap API now limits free weather data to 25 square
+            degrees.
           </div>
         </Fragment>
       )}

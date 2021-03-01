@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import useWindowDimensions from './helpers/windowProperties';
+import useWindowProperties from './helpers/windowProperties';
 import Map from './components/Map';
 import SidePanel from './components/Sidepanel';
 import './scss/style.scss';
@@ -12,10 +12,7 @@ const App = () => {
   const [clickedLocation, setClickedLocation] = useState(undefined);
   const [panelVisible, setPanelVisible] = useState(false);
   // const [center, setCenter] = useState(undefined);
-
-  const { orientation } = useWindowDimensions();
-
-  console.log('window:', orientation);
+  const { orientation } = useWindowProperties();
 
   let mapCenter = { lon: -0.15, lat: 51.51 };
   let world = '-3.5,50.5,1.5,55.5,';
@@ -23,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     if (weatherData.length === 0) getWeatherInfo();
-  }, []);
+  });
 
   useEffect(() => {
     const listener = (e) => {
@@ -49,11 +46,12 @@ const App = () => {
   // }, [clickedLocation]);
 
   let panelFadeTimer;
+
   const handleIconClick = (id) => {
     clearTimeout(panelFadeTimer);
     setClickedLocation(id);
     setPanelVisible(true);
-    // panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
+    panelFadeTimer = setTimeout(() => setPanelVisible(false), 20000);
   };
 
   let getWeatherInfo = async () => {
@@ -91,6 +89,7 @@ const App = () => {
         panelVisible={panelVisible}
         clickedLocation={clickedLocation}
         weatherData={weatherData}
+        orientation={orientation}
       />
     </main>
   );
